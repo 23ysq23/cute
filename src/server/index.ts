@@ -1,7 +1,7 @@
 import express from "express"
 import nextI18NextMiddleware from "next-i18next/middleware"
 import bodyParser from "body-parser"
-import {} from 'passport'
+import {} from "passport"
 import "reflect-metadata" //before type-graphql
 
 import nextI18next from "../i18n"
@@ -23,8 +23,8 @@ const handle = app.getRequestHandler()
   await nextI18next.initPromise
   server.use(nextI18NextMiddleware(nextI18next))
 
-  server.get('/login', (req, res) => app.render(req, res, '/login'))
-  server.get('/', (req, res) => app.render(req, res, '/'))
+  server.get("/login", (req, res) => app.render(req, res, "/login"))
+  server.get("/", (req, res) => app.render(req, res, "/"))
   server.all("*", (req, res) => res.headersSent || handle(req, res))
 
   server.listen(port, () => {

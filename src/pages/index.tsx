@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react"
+import React from "react"
 import gql from "graphql-tag"
 import { withApollo, useQuery } from "apollo-client-ssr"
 
@@ -19,12 +19,6 @@ const Home: TPC = () => {
   const { error, data, loading } = useQuery<{
     get: { date: Date; string: string }
   }>(QUERY, { pollInterval: 1000 })
-  const [ username, setUsername]=useState<string>('')
-  const [ password, setPassword]=useState<string>('')
-  function submit(e:FormEvent){
-    e.preventDefault()
-    alert(JSON.stringify(`${username} ${password}`))
-  }
   return (
     <div>
       <div>{t("description")}</div>
